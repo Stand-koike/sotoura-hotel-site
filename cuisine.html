@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お料理 | 蒼海の宿 ならいの風</title>
+    <meta name="description" content="美味に感動、新鮮な海の幸。食卓で三世代がそろうお料理のご案内。蒼海の宿 ならいの風（下田・外浦）。">
+    <script>
+      tailwind = { config: { corePlugins: { preflight: false } } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond%3Aital%2Cwght%401%2C300..700&family=Shippori+Antique+B1%3Awght%40400&family=Shippori+Mincho%3Awght%40400%3B500&display=swap" rel="stylesheet">
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      .cuisine-slideshow__main-img,
+      .cuisine-slideshow__thumb-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .cuisine-slideshow__main-img {
+        transition: opacity 0.35s ease;
+      }
+
+      .cuisine-slideshow__thumb {
+        border: 2px solid transparent;
+      }
+
+      .cuisine-slideshow__thumb.is-active {
+        border-color: #4A5D5B;
+      }
+
+      .cuisine-slideshow__dot {
+        background-color: #C8D0CC;
+      }
+
+      .cuisine-slideshow__dot.is-active {
+        background-color: #BFA170;
+      }
+
+      .cuisine-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .cuisine-card--hover:hover .cuisine-card__img {
+        transform: scale(1.04);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cuisine-slideshow__main-img,
+        .cuisine-card__img {
+          transition: none;
+        }
+
+        .cuisine-card--hover:hover .cuisine-card__img {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div data-pencil-name="料理 — 三世代温もり案" class="box-border w-full max-w-[1440px] mx-auto h-fit flex flex-col gap-0 justify-start items-stretch bg-[#F0F4F3] overflow-hidden">
+      <header data-pencil-name="Header" class="box-border w-full shrink-0 flex flex-wrap md:flex-nowrap md:flex-row md:h-[72px] gap-3 md:gap-0 p-4 md:p-[0px_56px] md:justify-between md:items-center bg-[#F0F4F3]">
+        <a href="index.html" data-pencil-name="Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border order-1 w-[181px] max-w-[50%] md:max-w-none shrink-0 h-fit flex flex-row gap-[10px] justify-start items-center no-underline">
+          <img data-pencil-name="Logo Mark" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border [flex:1_1_0] h-[57px] w-full object-contain">
+        </a>
+        <a href="tel:0558-36-4500" data-pencil-name="Header CTA" class="box-border order-2 md:order-3 ml-auto lg:ml-0 w-fit shrink-0 h-fit flex flex-row gap-0 py-[10px] px-[18px] md:px-4 lg:px-[18px] justify-start items-center bg-[#4A5D5B] rounded-[2px] text-[14px]/[normal] md:text-[13px] lg:text-[14px] text-[#F0F4F3] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">ご予約・ご相談</a>
+
+        <nav data-pencil-name="Nav Links" aria-label="メインナビゲーション" class="box-border order-3 md:order-2 w-full md:w-fit shrink-0 h-fit basis-full md:basis-auto flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[28px] justify-start items-center">
+          <a href="rooms.html" data-pencil-name="Nav 客室" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" data-pencil-name="Nav 温泉" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" data-pencil-name="Nav 料理" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" data-pencil-name="Nav 過ごし方" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" data-pencil-name="Nav アクセス" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" data-pencil-name="Nav FAQ" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+        </nav>
+      </header>
+
+      <main class="w-full">
+              <div data-pencil-name="Page Hero" class="box-border w-full h-[820px] shrink-0 bg-[url('assets/images/未使用/天草.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="Hero Overlay" class="box-border absolute inset-0 w-full h-full [background-image:linear-gradient(180deg,_#1A242299_0%,_#1A242244_50%,_#1A2422BB_100%)] bg-no-repeat bg-[length:100%_100%] [z-index:0]"></div>
+        <div data-pencil-name="Hero Content" class="box-border w-[calc(100%-2rem)] max-w-[640px] md:w-[640px] h-fit absolute left-4 md:left-[80px] top-[200px] md:top-[280px] flex flex-col gap-[16px] justify-start items-start [z-index:1]">
+          <div data-pencil-name="Hero En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Cuisine
+          </div>
+          <h1 data-pencil-name="Hero H1" class="m-0 text-[32px]/[normal] md:text-[48px]/[normal] box-border w-full text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+            お料理
+          </h1>
+          <div data-pencil-name="Hero Sub" class="text-[16px]/[29px] box-border w-full text-[#E8EEEA] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+            美味に感動、新鮮な海の幸。
+            <br>
+            食卓で、三世代がそろう。
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="Intro" class="box-border w-full h-fit shrink-0 flex flex-col gap-[16px] px-5 py-12 md:p-[72px_120px] justify-start items-center bg-[#F0F4F3]">
+        <div data-pencil-name="Intro Body" class="text-[16px]/[32px] box-border w-full max-w-[720px] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center">
+          お客様に提供する新鮮な魚介類は、館主自ら自船「大番丸」にて
+          <br>
+          伊豆下田沖に出漁し仕入れているからこそ、新鮮な最高の海の幸を
+          <br>
+          ご提供しております。地元の素材にこだわった料理をご堪能ください。
+        </div>
+      </div>
+
+              <div data-pencil-name="金目鯛" class="box-border w-full h-fit shrink-0 flex flex-col gap-[48px] px-5 py-12 md:p-[96px_80px] justify-start items-center bg-[#FFFFFF]">
+
+        <div data-pencil-name="Feat Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[12px] justify-start items-center">
+
+          <div data-pencil-name="Feat En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+
+            Signature
+
+          </div>
+
+          <div data-pencil-name="Feat Ja" class="text-[32px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+
+            金目鯛
+
+          </div>
+
+        </div>
+
+        <div data-pencil-name="Feat Row" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[56px] justify-start items-center">
+
+          <div data-pencil-name="Kinmedai Slideshow" class="cuisine-slideshow box-border w-full max-w-[560px] lg:w-[560px] shrink-0 h-fit flex flex-col gap-[10px] justify-start items-start" data-slideshow="">
+
+            <div data-pencil-name="Slide Main" class="cuisine-slideshow__main box-border w-full max-w-[560px] lg:w-[560px] h-[220px] md:h-[360px] shrink-0 overflow-hidden bg-[#ddd]">
+
+              <img data-slide-main="" src="assets/images/dish/dish-kinmedai-01.jpg" alt="金目鯛の煮付け" width="560" height="360" class="cuisine-slideshow__main-img">
+
+            </div>
+
+            <div data-pencil-name="Slide Thumbs" class="cuisine-slideshow__thumbs box-border w-full max-w-[560px] lg:w-[560px] h-fit shrink-0 flex flex-row flex-wrap gap-[8px] justify-start items-start">
+
+              <button type="button" data-pencil-name="Thumb 1" class="cuisine-slideshow__thumb is-active box-border w-[120px] shrink-0 h-[50px] overflow-hidden p-0 cursor-pointer bg-transparent" data-slide-thumb="" data-src="assets/images/dish/dish-kinmedai-01.jpg" aria-label="写真1">
+
+                <img src="assets/images/dish/dish-kinmedai-01.jpg" alt="" width="120" height="50" class="cuisine-slideshow__thumb-img">
+
+              </button>
+
+              <button type="button" data-pencil-name="Thumb 2" class="cuisine-slideshow__thumb box-border w-[120px] shrink-0 h-[50px] overflow-hidden p-0 cursor-pointer bg-transparent" data-slide-thumb="" data-src="assets/images/dish/dish-kinmedai-02.jpg" aria-label="写真2">
+
+                <img src="assets/images/dish/dish-kinmedai-02.jpg" alt="" width="120" height="50" class="cuisine-slideshow__thumb-img">
+
+              </button>
+
+              <button type="button" data-pencil-name="Thumb 3" class="cuisine-slideshow__thumb box-border w-[120px] shrink-0 h-[50px] overflow-hidden p-0 cursor-pointer bg-transparent" data-slide-thumb="" data-src="assets/images/dish/dish-kinmedai-03.jpg" aria-label="写真3">
+
+                <img src="assets/images/dish/dish-kinmedai-03.jpg" alt="" width="120" height="50" class="cuisine-slideshow__thumb-img">
+
+              </button>
+
+            </div>
+
+            <div data-pencil-name="Slide Dots" class="cuisine-slideshow__dots box-border w-full max-w-[560px] lg:w-[560px] h-fit shrink-0 flex flex-row gap-[6px] justify-center items-center">
+
+              <button type="button" data-pencil-name="Dot Active" class="cuisine-slideshow__dot is-active box-border w-[6px] shrink-0 h-[6px] rounded-full p-0 border-0 cursor-pointer" data-slide-dot="" aria-label="スライド1"></button>
+
+              <button type="button" data-pencil-name="Dot 2" class="cuisine-slideshow__dot box-border w-[6px] shrink-0 h-[6px] rounded-full p-0 border-0 cursor-pointer" data-slide-dot="" aria-label="スライド2"></button>
+
+              <button type="button" data-pencil-name="Dot 3" class="cuisine-slideshow__dot box-border w-[6px] shrink-0 h-[6px] rounded-full p-0 border-0 cursor-pointer" data-slide-dot="" aria-label="スライド3"></button>
+
+            </div>
+
+          </div>
+
+          <div data-pencil-name="Feat Text" class="box-border [flex:1_1_0] h-fit flex flex-col gap-[20px] justify-start items-start">
+
+            <div data-pencil-name="Feat Label" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+
+              From the Boat
+
+            </div>
+
+            <div data-pencil-name="Feat Title" class="text-[28px]/[41px] box-border w-full text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+
+              その日一番の一尾を、
+
+              <br>
+
+              食卓へ
+
+            </div>
+
+            <div data-pencil-name="Feat Body" class="text-[16px]/[32px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              館主自らが出漁して仕入れる獲れたて新鮮な伊豆の幸を存分に楽しめます。下田名物のキンメダイ、サザエ、アワビなど、そのときの旬な海の食材をご提供します。
+
+              <br>
+
+              <br>
+
+              伊豆下田は、キンメダイ水揚げ量日本一。鮮やかな朱色の中から現れる白身にたっぷりと脂がのっていて、ふっくらとした食感と上品な味わい。こっくりと甘辛く煮つけた定番の煮付けでお召し上がりいただけます。
+
+            </div>
+
+            <div data-pencil-name="Feat Tags" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[10px] justify-start items-start">
+
+              <div data-pencil-name="Tag 地魚" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[6px_12px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+
+                <div data-pencil-name="Tag Label" class="text-[12px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+
+                  地魚
+
+                </div>
+
+              </div>
+
+              <div data-pencil-name="Tag 手作り" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[6px_12px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+
+                <div data-pencil-name="Tag Label" class="text-[12px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+
+                  手作り
+
+                </div>
+
+              </div>
+
+              <div data-pencil-name="Tag 旬の一品" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[6px_12px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+
+                <div data-pencil-name="Tag Label" class="text-[12px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+
+                  旬の一品
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div data-pencil-name="Kinmedai Pair" class="cuisine-pair box-border w-full max-w-[820px] h-fit shrink-0 grid grid-cols-2 gap-[20px] justify-center items-center">
+
+          <img data-pencil-name="Kinmedai 04" src="assets/images/dish/dish-kinmedai-04.jpg" alt="金目鯛の料理" width="400" height="400" loading="lazy" class="cuisine-pair__img box-border w-full h-[400px] object-cover">
+
+          <img data-pencil-name="Kinmedai 05" src="assets/images/dish/dish-kinmedai-05.jpg" alt="漁の様子" width="400" height="400" loading="lazy" class="cuisine-pair__img box-border w-full h-[400px] object-cover">
+
+        </div>
+
+      </div>
+
+
+              <div data-pencil-name="豊かな恵み" class="cuisine-banner box-border w-full h-[420px] shrink-0 overflow-hidden relative flex items-center">
+
+        <div class="cuisine-banner__bg absolute inset-0" aria-hidden="true">
+
+          <img src="assets/images/dish/dish-visual-banner.jpg" alt="" width="1440" height="420" loading="lazy" class="cuisine-banner__img w-full h-full object-cover">
+
+        </div>
+
+        <div data-pencil-name="Banner Overlay" class="cuisine-banner__overlay box-border absolute inset-0 [background-image:linear-gradient(180deg,_#1A242266_0%,_#1A242244_50%,_#1A242288_100%)] bg-no-repeat bg-[length:100%_100%] [z-index:1]"></div>
+
+        <div data-pencil-name="Banner Title" class="text-[28px]/[40px] md:text-[36px]/[52px] box-border w-[calc(100%-2rem)] max-w-[720px] relative ml-4 md:ml-[80px] mr-4 text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [z-index:2]">
+
+          伊豆下田の
+
+          <br>
+
+          豊かな恵みに舌鼓
+
+        </div>
+
+      </div>
+
+
+              <div data-pencil-name="海の恵み" class="box-border w-full h-fit shrink-0 flex flex-col gap-[48px] px-5 py-12 md:p-[96px_80px] justify-start items-center bg-[#F0F4F3]">
+
+        <div data-pencil-name="Grid Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[12px] justify-start items-center">
+
+          <div data-pencil-name="Grid En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+
+            From Sea &amp; Farm
+
+          </div>
+
+          <div data-pencil-name="Grid Ja" class="text-[32px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+
+            土地の恵み
+
+          </div>
+
+          <div data-pencil-name="Grid Lead" class="text-[14px]/[normal] box-border w-full max-w-[640px] px-2 text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center">
+
+            とこぶしご飯から、自家製ゆず胡椒の天ぷらまで
+
+          </div>
+
+        </div>
+
+        <div data-pencil-name="Iseebi Block" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[48px] justify-start items-center">
+
+          <img data-pencil-name="Ise Img" src="assets/images/dish/dish-lobster-salad.jpg" alt="伊勢海老入りサラダ" width="560" height="420" loading="lazy" class="cuisine-split__img box-border w-full max-w-[560px] lg:w-[560px] shrink-0 h-[280px] md:h-[420px] object-cover">
+
+          <div data-pencil-name="Ise Text" class="box-border [flex:1_1_0] h-fit flex flex-col gap-[16px] justify-start items-start">
+
+            <div data-pencil-name="Ise En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+
+              Special
+
+            </div>
+
+            <div data-pencil-name="Ise Title" class="text-[26px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+
+              伊勢海老入りサラダ
+
+            </div>
+
+            <div data-pencil-name="Ise Body" class="text-[16px]/[32px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              漁師宿だからこそできる「豪華伊勢海老入りサラダ」。
+
+              <br>
+
+              動く伊勢海老のまるごと1匹や、旬の地魚を贅沢に並べた舟盛りも。
+
+              <br>
+
+              ご家族で囲む食卓へ、海の恵みを存分にお楽しみください。
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div data-pencil-name="Veg Block" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[48px] justify-start items-center">
+
+          <div data-pencil-name="Veg Text" class="box-border [flex:1_1_0] h-fit flex flex-col gap-[16px] justify-start items-start">
+
+            <div data-pencil-name="Veg En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+
+              Farm to Table
+
+            </div>
+
+            <div data-pencil-name="Veg Title" class="text-[26px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+
+              自家農園の朝どり野菜
+
+            </div>
+
+            <div data-pencil-name="Veg Body" class="text-[16px]/[32px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              自家農園で作った新鮮な朝採り野菜がお食事を彩ります。
+
+              <br>
+
+              その時期に一番おいしい旬の食材を厳選してお届けする。
+
+              <br>
+
+              小さなお子様も安心してお召し上がりいただける、本物の味わいです。
+
+            </div>
+
+          </div>
+
+          <img data-pencil-name="Veg Img" src="assets/images/dish/dish-farm-veg.jpg" alt="自家農園の朝どり野菜" width="560" height="420" loading="lazy" class="cuisine-split__img box-border w-full max-w-[560px] lg:w-[560px] shrink-0 h-[280px] md:h-[420px] object-cover">
+
+        </div>
+
+        <div data-pencil-name="Food Gallery" class="box-border w-full h-fit shrink-0 flex flex-row gap-[20px] justify-start items-start">
+
+          <article data-pencil-name="Gal 旬の天ぷら" class="cuisine-card cuisine-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[12px] justify-start items-start overflow-hidden">
+
+            <div class="cuisine-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+
+              <img data-pencil-name="Gal Img" src="assets/images/dish/dish-tokobushi.jpg" alt="とこぶしご飯" width="300" height="310" loading="lazy" class="cuisine-card__img">
+
+            </div>
+
+            <div data-pencil-name="Gal Cap" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              とこぶしご飯
+
+            </div>
+
+          </article>
+
+          <article data-pencil-name="Gal あわびの踊り漬け" class="cuisine-card cuisine-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[12px] justify-start items-start overflow-hidden">
+
+            <div class="cuisine-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+
+              <img data-pencil-name="Gal Img" src="assets/images/dish/dish-lobster-salad.jpg" alt="豪華伊勢海老入りサラダ" width="300" height="310" loading="lazy" class="cuisine-card__img">
+
+            </div>
+
+            <div data-pencil-name="Gal Cap" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              豪華伊勢海老入りサラダ
+
+            </div>
+
+          </article>
+
+          <article data-pencil-name="Gal ご家族の食卓" class="cuisine-card cuisine-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[12px] justify-start items-start overflow-hidden">
+
+            <div class="cuisine-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+
+              <img data-pencil-name="Gal Img" src="assets/images/dish/dish-veg-tempura.jpg" alt="旬の野菜天ぷら" width="300" height="310" loading="lazy" class="cuisine-card__img">
+
+            </div>
+
+            <div data-pencil-name="Gal Cap" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              旬の野菜天ぷら
+
+            </div>
+
+          </article>
+
+          <article data-pencil-name="Gal 朝採り野菜" class="cuisine-card cuisine-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[12px] justify-start items-start overflow-hidden">
+
+            <div class="cuisine-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+
+              <img data-pencil-name="Gal Img" src="assets/images/dish/dish-farm-veg.jpg" alt="朝採りの旬野菜" width="300" height="310" loading="lazy" class="cuisine-card__img">
+
+            </div>
+
+            <div data-pencil-name="Gal Cap" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+
+              朝採りの旬野菜
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+
+              <div data-pencil-name="食卓の安心" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[56px] px-5 py-12 md:p-[88px_80px] justify-start items-center bg-[#E8EEEA]">
+        <div data-pencil-name="Fam Img" class="box-border w-full max-w-[560px] lg:w-[560px] shrink-0 h-[280px] md:h-[420px] flex flex-row gap-0 justify-start items-start bg-[url('assets/images/追加/食べる子ども.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden"></div>
+        <div data-pencil-name="Fam Text" class="box-border [flex:1_1_0] h-fit flex flex-col gap-[18px] justify-start items-start">
+          <div data-pencil-name="Fam En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Peace of Mind
+          </div>
+          <div data-pencil-name="Fam Title" class="text-[28px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            ご家族の食卓を、
+            <br>
+            安心してお楽しみください
+          </div>
+          <div data-pencil-name="Fam Body" class="text-[16px]/[32px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+            アレルギー対応や幼児用のお食事も、可能な範囲でご用意します。
+            <br>
+            年齢や好みに合わせてご相談ください。
+            <br>
+            予約前の小さなご不安も、お電話でお聞かせください。
+          </div>
+          <div data-pencil-name="Fam Points" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[10px] p-[8px_0px_0px_0px] justify-start items-start">
+            <div data-pencil-name="Point" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[10px] justify-start items-center">
+              <div data-pencil-name="Dot" class="box-border w-[6px] shrink-0 h-[6px] bg-[#BFA170] rounded-full"></div>
+              <div data-pencil-name="Point T" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                アレルギーはご予約時またはお電話で事前にお知らせを
+              </div>
+            </div>
+            <div data-pencil-name="Point" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[10px] justify-start items-center">
+              <div data-pencil-name="Dot" class="box-border w-[6px] shrink-0 h-[6px] bg-[#BFA170] rounded-full"></div>
+              <div data-pencil-name="Point T" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                お子様向けのお食事もご用意できます
+              </div>
+            </div>
+            <div data-pencil-name="Point" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[10px] justify-start items-center">
+              <div data-pencil-name="Dot" class="box-border w-[6px] shrink-0 h-[6px] bg-[#BFA170] rounded-full"></div>
+              <div data-pencil-name="Point T" class="text-[14px]/[normal] box-border text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                漁師が素材を選ぶからこそ、ご要望に柔軟に対応
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="相談CTA" class="box-border w-full h-fit min-h-[480px] md:min-h-[573px] md:h-[573px] shrink-0 flex flex-col gap-[20px] px-5 py-16 md:px-5 py-12 md:p-[80px_100px] justify-center items-center bg-[url('assets/images/final-cta-bg.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="CTA Overlay" class="box-border absolute inset-0 w-full h-full bg-[#1a242299] [z-index:0]"></div>
+        <div data-pencil-name="CTA Heading" class="text-[28px]/[40px] md:text-[36px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-center relative [z-index:1]">
+          お食事のご相談、お待ちしています
+        </div>
+        <div data-pencil-name="CTA Body" class="text-[16px]/[30px] box-border w-full max-w-[560px] px-1 text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center relative [z-index:2]">
+          アレルギー対応など、お食事に関するご要望も
+          <br>
+          お気軽にご相談ください。
+        </div>
+        <div data-pencil-name="CTA Actions" class="box-border w-full max-w-[560px] h-fit shrink-0 flex flex-col sm:flex-row gap-[16px] sm:gap-[20px] p-[12px_0px_0px_0px] justify-center items-center relative [z-index:3]">
+          <a data-pencil-name="CTA Tel" class="text-[28px]/[normal] box-border text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline" href="tel:0558-36-4500">
+            0558-36-4500
+          </a>
+          <a data-pencil-name="CTA Book" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[14px_28px] justify-start items-center bg-[#BFA170] rounded-[2px] no-underline" href="tel:0558-36-4500">
+            <div data-pencil-name="CTA Book Label" class="text-[14px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+              空室確認・予約
+            </div>
+          </a>
+        </div>
+      </div>
+
+      </main>
+      <footer data-pencil-name="Footer" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 pt-14 pb-8 md:px-[80px] md:pt-[56px] md:pb-[32px] justify-start items-start bg-[#4A5D5B]">
+        <div data-pencil-name="Footer Main" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-8 md:gap-[48px] justify-between items-start">
+          <div data-pencil-name="Footer Brand" class="box-border w-fit shrink-0 h-fit flex flex-col gap-[6px] justify-start items-start">
+            <a href="index.html" data-pencil-name="Footer Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border w-fit shrink-0 h-fit no-underline">
+              <img data-pencil-name="Footer Logo Img" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border w-[136px] h-[61px] shrink-0 object-contain">
+            </a>
+          </div>
+          <div data-pencil-name="Footer Info" class="box-border w-full md:w-fit shrink-0 h-fit flex flex-col gap-[14px] justify-start items-start md:items-end">
+            <address data-pencil-name="Info Addr" class="text-[12px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:text-right md:[white-space:nowrap] not-italic">
+              静岡県下田市柿崎700番地・外浦海水浴場 目の前
+            </address>
+            <nav data-pencil-name="Info Nav" aria-label="フッターナビゲーション" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[20px] justify-start md:justify-start items-center">
+              <a href="rooms.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+            </nav>
+            <div data-pencil-name="Info Contact" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-col sm:flex-row flex-wrap gap-2 md:gap-[10px] justify-start items-start sm:items-center">
+              <a href="tel:0558-36-4500" data-pencil-name="Footer Phone" class="text-[16px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left md:[white-space:nowrap] no-underline">0558-36-4500</a>
+
+              <span class="text-[13px]/[normal] box-border text-[#929E9D] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] hidden sm:inline">
+                ・
+              </span>
+              <a href="tel:0558-36-4500" class="text-[13px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">
+                空室確認・予約 →
+              </a>
+            </div>
+          </div>
+        </div>
+        <div data-pencil-name="Footer Rule" class="box-border w-full h-[1px] shrink-0 bg-[#6A7A79]" aria-hidden="true"></div>
+        <div data-pencil-name="Footer Bottom" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-start md:items-center">
+          <small data-pencil-name="Copyright" class="text-[11px]/[normal] box-border text-[#AEB6B5] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap]">
+            © 蒼海の宿 ならいの風 All Rights Reserved.
+          </small>
+          <div data-pencil-name="Footer Locale" class="text-[12px]/[normal] box-border text-[#AEB6B5] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[1px] text-left md:[white-space:nowrap]">
+            Izu Shimoda · Soto-ura
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script>
+      window.__SRC_BASE__ = "../";
+      window.__ASSET_BASE__ = "assets/";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="scripts/animation.js"></script>
+    <script src="scripts/cuisine-slideshow.js"></script>
+  </body>
+</html>

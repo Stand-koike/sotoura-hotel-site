@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくあるご質問 | 蒼海の宿 ならいの風</title>
+    <meta name="description" content="ご予約前の小さなご不安へ。お支払い・設備などよくあるご質問。お電話でもお答えします。蒼海の宿 ならいの風。">
+    <script>
+      tailwind = { config: { corePlugins: { preflight: false } } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond%3Aital%2Cwght%400%2C300..700%3B1%2C300..700&family=Shippori+Antique+B1%3Awght%40400&family=Shippori+Mincho%3Awght%40400%3B500&display=swap" rel="stylesheet">
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      /* FAQ accordion（参照: narainokaze-hp/faq.html）
+         初期状態で回答を閉じておく（レイアウト確定 → CTA が消えない） */
+      [data-pencil-name="Stay List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"],
+      [data-pencil-name="Dine List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"],
+      [data-pencil-name="Other List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"] {
+        display: grid;
+        grid-template-rows: 0fr;
+      }
+
+      [data-pencil-name="Stay List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"] > *,
+      [data-pencil-name="Dine List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"] > *,
+      [data-pencil-name="Other List"] > [data-pencil-name^="FAQ "] > [data-pencil-name="A"] > * {
+        overflow: hidden;
+      }
+
+      .faq-acc-item {
+        gap: 0 !important;
+      }
+
+      .faq-acc-item__q {
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .faq-acc-item__q:focus-visible {
+        outline: 2px solid #BFA170;
+        outline-offset: 4px;
+      }
+
+      .faq-acc-item__a {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.35s ease;
+      }
+
+      .faq-acc-item__a-inner {
+        overflow: hidden;
+      }
+
+      .faq-acc-item.is-open .faq-acc-item__a {
+        grid-template-rows: 1fr;
+      }
+
+      .faq-acc-item.is-open .faq-acc-item__a-inner {
+        padding-top: 14px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .faq-acc-item__a {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body data-page="faq">
+    <div data-pencil-name="FAQ — 三世代温もり案" class="box-border w-full max-w-[1440px] mx-auto h-fit flex flex-col gap-0 justify-start items-stretch bg-[#F0F4F3] overflow-hidden">
+      <header data-pencil-name="Header" class="box-border w-full shrink-0 flex flex-wrap md:flex-nowrap md:flex-row md:h-[72px] gap-3 md:gap-0 p-4 md:p-[0px_56px] md:justify-between md:items-center bg-[#F0F4F3]">
+        <a href="index.html" data-pencil-name="Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border order-1 w-[181px] max-w-[50%] md:max-w-none shrink-0 h-fit flex flex-row gap-[10px] justify-start items-center no-underline">
+          <img data-pencil-name="Logo Mark" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border [flex:1_1_0] h-[57px] w-full object-contain">
+        </a>
+        <a href="tel:0558-36-4500" data-pencil-name="Header CTA" class="box-border order-2 md:order-3 ml-auto lg:ml-0 w-fit shrink-0 h-fit flex flex-row gap-0 py-[10px] px-[18px] md:px-4 lg:px-[18px] justify-start items-center bg-[#4A5D5B] rounded-[2px] text-[14px]/[normal] md:text-[13px] lg:text-[14px] text-[#F0F4F3] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">ご予約・ご相談</a>
+
+        <nav data-pencil-name="Nav Links" aria-label="メインナビゲーション" class="box-border order-3 md:order-2 w-full md:w-fit shrink-0 h-fit basis-full md:basis-auto flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[28px] justify-start items-center">
+          <a href="rooms.html" data-pencil-name="Nav 客室" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" data-pencil-name="Nav 温泉" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" data-pencil-name="Nav 料理" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" data-pencil-name="Nav 過ごし方" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" data-pencil-name="Nav アクセス" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" data-pencil-name="Nav FAQ" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+        </nav>
+      </header>
+
+      <main class="w-full">
+              <div data-pencil-name="Page Hero" class="box-border w-full h-[820px] shrink-0 bg-[url('assets/images/未使用/部屋.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="Hero Overlay" class="box-border absolute inset-0 w-full h-full [background-image:linear-gradient(180deg,_#1A242299_0%,_#1A242244_50%,_#1A2422BB_100%)] bg-no-repeat bg-[length:100%_100%] [z-index:0]"></div>
+        <div data-pencil-name="Hero Content" class="box-border w-[calc(100%-2rem)] max-w-[640px] md:w-[640px] h-fit absolute left-4 md:left-[80px] top-[200px] md:top-[280px] flex flex-col gap-[16px] justify-start items-start [z-index:1]">
+          <div data-pencil-name="Hero En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            FAQ
+          </div>
+          <h1 data-pencil-name="Hero H1" class="m-0 text-[32px]/[normal] md:text-[48px]/[normal] box-border w-full text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+            よくあるご質問
+          </h1>
+          <div data-pencil-name="Hero Sub" class="text-[16px]/[29px] box-border w-full text-[#E8EEEA] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+            ご予約前の、小さなご不安へ。お電話でもお答えします。
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="Intro" class="box-border w-full h-fit shrink-0 flex flex-col gap-[16px] px-5 py-12 md:p-[72px_120px] justify-start items-center bg-[#F0F4F3]">
+        <div data-pencil-name="Intro Body" class="text-[16px]/[32px] box-border w-full max-w-[720px] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center">
+          施設・周辺環境・お支払いなど、よくいただくご質問をまとめました。
+        </div>
+      </div>
+
+              <div data-pencil-name="施設について" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 py-12 md:p-[80px_120px] justify-start items-center bg-[#FFFFFF]">
+        <div data-pencil-name="Stay Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[10px] justify-start items-center">
+          <div data-pencil-name="Stay En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Facilities
+          </div>
+          <div data-pencil-name="Stay Ja" class="text-[28px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            施設について
+          </div>
+        </div>
+        <div data-pencil-name="Stay List" class="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] justify-start items-start">
+          <div data-pencil-name="FAQ 車いす" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                「車いす」の利用でも大丈夫でしょうか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              誠に残念ながら、現在のところ車椅子でのご宿泊は不可となっております。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 喫煙" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                喫煙のお部屋はありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              当館は「全館禁煙」となっております。
+              <br>
+              <br>
+              喫煙については、フロントロビー横にありますテラスにて喫煙場所を設けておりますのでそちらをご利用いただきます。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 日帰り温泉" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                日帰り温泉はできますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              当館では日帰り温泉は行っておりません。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 夏の駐車場" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                夏のチェックイン前の駐車場利用はできますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              夏の期間中のチェックイン（15時）前のお車の駐車はできません。
+              <br>
+              <br>
+              ただし、当日他のお客様の駐車状況により駐車できる場合もございます。
+              <br>
+              当日お越しの際にフロントにてご確認ください。
+              <br>
+              駐車できない場合は、近くの有料駐車場をご案内いたします。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 露天風呂" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                露天風呂はありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              残念ながら大浴場に露天風呂はございません。
+              <br>
+              和洋室の客室が「半露天風呂付」となっております。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ ツインベッド" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                ツインルームのベットは、つなげての利用は可能ですか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              はい。小さなお子様であれば、ベットをつなげて広くご利用いただけます。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 洗濯機" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                洗濯機はありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              無料でご利用いただける洗濯機がございます。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 部屋風呂" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                お部屋にお風呂はありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              「和洋室タイプ」と「二間続き」の客室に温泉お風呂が付いております。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ ペット" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                ペットと宿泊はできますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              ペット同伴での宿泊はできません。
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="周辺環境について" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 py-12 md:p-[80px_120px] justify-start items-center bg-[#E8EEEA]">
+        <div data-pencil-name="Dine Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[10px] justify-start items-center">
+          <div data-pencil-name="Dine En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Area
+          </div>
+          <div data-pencil-name="Dine Ja" class="text-[28px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            周辺環境について
+          </div>
+        </div>
+        <div data-pencil-name="Dine List" class="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] justify-start items-start">
+          <div data-pencil-name="FAQ 雨の施設" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                近くに雨でも遊べる施設はありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              当館より車で15分ほどのところに「下田海中水族館」や「izoo」がございます。
+              <br>
+              <br>
+              ◆下田海中水族館
+              <br>
+              イルカやアシカのショーがご覧いただけます。
+              <br>
+              <br>
+              ◆iZoo（イズー）
+              <br>
+              たくさんのハ虫類がいて今人気のスポットです
+            </div>
+          </div>
+          <div data-pencil-name="FAQ コンビニ" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                近くにコンビニはありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              車で５分ほどのところに「セブンイレブン」がございます。
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="お支払い・その他" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 py-12 md:p-[80px_120px] justify-start items-center bg-[#FFFFFF]">
+        <div data-pencil-name="Other Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[10px] justify-start items-center">
+          <div data-pencil-name="Other En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Payment &amp; More
+          </div>
+          <div data-pencil-name="Other Ja" class="text-[28px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            お支払い・その他
+          </div>
+        </div>
+        <div data-pencil-name="Other List" class="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] justify-start items-start">
+          <div data-pencil-name="FAQ 予約金キャンセル" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                予約金は必要ですか？キャンセル料は？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              予約金は宿泊料金に応じていただく場合がございます。
+              <br>
+              <br>
+              キャンセル料は以下のとおりとなっております。
+              <br>
+              10日〜6日前：宿泊料金の２０％
+              <br>
+              5日〜3日前：宿泊料金の３０％
+              <br>
+              ２日・前日：宿泊料金の５０％
+              <br>
+              不泊・当日：宿泊料金の１００％
+            </div>
+          </div>
+          <div data-pencil-name="FAQ クレジットカード" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                クレジットカードは利用できますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              VISA , MASTER , AmericanExpress , JCB , Discover , Diner’s Club がご利用いただけます。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 荷物預かり" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                荷物の預かりはしてくれますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              チェックイン前とチェックアウト後のお荷物を当館へ置いておくことは可能です。
+              <br>
+              貴重品についてはお客様の責任にて管理をお願いいたします。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ カーナビ" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                カーナビにうまく現地が表示されない
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              住所検索を登録される場合、下記の住所をご入力ください。
+              <br>
+              「 静岡県下田市柿崎693-1 」
+              <br>
+              <br>
+              静岡県下田市柿崎700ですと正確に表示されないようです。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 伊勢海老体験" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                家族で体験できることはありますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              当館では宿泊客の皆様に伊勢海老漁の期間中、「伊勢海老漁の無料体験」を実施しております。
+              <br>
+              伊勢海老漁の期間は毎年 １０月〜５月までです。
+              <br>
+              また、天候、海の状況により漁ができない場合は体験できません。詳しくは「伊勢海老漁体験」をご覧ください。
+            </div>
+          </div>
+          <div data-pencil-name="FAQ 送迎" class="box-border w-full h-fit shrink-0 flex flex-col gap-[14px] p-[24px_28px] justify-start items-start bg-[#FFFFFF]">
+            <div data-pencil-name="Q Row" class="box-border w-full h-fit shrink-0 flex flex-row gap-[16px] justify-between items-center">
+              <div data-pencil-name="Q" class="text-[18px]/[27px] box-border [flex:1_1_0] text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                駅までの送迎はしてくれますか？
+              </div>
+              <div data-pencil-name="Icon" class="text-[22px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                ＋
+              </div>
+            </div>
+            <div data-pencil-name="A" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              申し訳ありませんが、送迎は行っておりません。伊豆急下田駅〜当館までタクシーをご利用の場合は、領収書をお持ちいただければチェックアウト時に1,000円分キャッシュバックいたします。
+              <br>
+              <br>
+              ◆路線バス
+              <br>
+              伊豆急下田駅よりバス10分
+              <br>
+              乗り場／9番 「白浜」行き
+              <br>
+              降り場／「外浦口」バス停下車･･･徒歩5分
+              <br>
+              <br>
+              ◆タクシー
+              <br>
+              伊豆急下田駅より7分
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="相談CTA" class="box-border w-full h-fit min-h-[480px] md:min-h-[573px] md:h-[573px] shrink-0 flex flex-col gap-[20px] px-5 py-16 md:px-5 py-12 md:p-[80px_100px] justify-center items-center bg-[url('assets/images/final-cta-bg.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="CTA Overlay" class="box-border absolute inset-0 w-full h-full bg-[#1a242299] [z-index:0]"></div>
+        <div data-pencil-name="CTA Heading" class="text-[28px]/[40px] md:text-[36px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-center relative [z-index:1]">
+          お電話でのご予約・お問い合わせ
+        </div>
+        <div data-pencil-name="CTA Body" class="text-[16px]/[30px] box-border w-full max-w-[560px] px-1 text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center relative [z-index:2]">
+          ご予約前のご不安やご相談も、お気軽にお電話ください。
+        </div>
+        <div data-pencil-name="CTA Actions" class="box-border w-full max-w-[560px] h-fit shrink-0 flex flex-col sm:flex-row gap-[16px] sm:gap-[20px] p-[12px_0px_0px_0px] justify-center items-center relative [z-index:3]">
+          <a data-pencil-name="CTA Tel" class="text-[28px]/[normal] box-border text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline" href="tel:0558-36-4500">
+            0558-36-4500
+          </a>
+          <a data-pencil-name="CTA Book" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[14px_28px] justify-start items-center bg-[#BFA170] rounded-[2px] no-underline" href="tel:0558-36-4500">
+            <div data-pencil-name="CTA Book Label" class="text-[14px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+              空室確認・予約
+            </div>
+          </a>
+        </div>
+      </div>
+
+      </main>
+      <footer data-pencil-name="Footer" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 pt-14 pb-8 md:px-[80px] md:pt-[56px] md:pb-[32px] justify-start items-start bg-[#4A5D5B]">
+        <div data-pencil-name="Footer Main" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-8 md:gap-[48px] justify-between items-start">
+          <div data-pencil-name="Footer Brand" class="box-border w-fit shrink-0 h-fit flex flex-col gap-[6px] justify-start items-start">
+            <a href="index.html" data-pencil-name="Footer Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border w-fit shrink-0 h-fit no-underline">
+              <img data-pencil-name="Footer Logo Img" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border w-[136px] h-[61px] shrink-0 object-contain">
+            </a>
+          </div>
+          <div data-pencil-name="Footer Info" class="box-border w-full md:w-fit shrink-0 h-fit flex flex-col gap-[14px] justify-start items-start md:items-end">
+            <address data-pencil-name="Info Addr" class="text-[12px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:text-right md:[white-space:nowrap] not-italic">
+              静岡県下田市柿崎700番地・外浦海水浴場 目の前
+            </address>
+            <nav data-pencil-name="Info Nav" aria-label="フッターナビゲーション" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[20px] justify-start md:justify-start items-center">
+              <a href="rooms.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+            </nav>
+            <div data-pencil-name="Info Contact" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-col sm:flex-row flex-wrap gap-2 md:gap-[10px] justify-start items-start sm:items-center">
+              <a href="tel:0558-36-4500" data-pencil-name="Footer Phone" class="text-[16px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left md:[white-space:nowrap] no-underline">0558-36-4500</a>
+
+              <span class="text-[13px]/[normal] box-border text-[#929E9D] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] hidden sm:inline">
+                ・
+              </span>
+              <a href="tel:0558-36-4500" class="text-[13px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">
+                空室確認・予約 →
+              </a>
+            </div>
+          </div>
+        </div>
+        <div data-pencil-name="Footer Rule" class="box-border w-full h-[1px] shrink-0 bg-[#6A7A79]" aria-hidden="true"></div>
+        <div data-pencil-name="Footer Bottom" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-start md:items-center">
+          <small data-pencil-name="Copyright" class="text-[11px]/[normal] box-border text-[#AEB6B5] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap]">
+            © 蒼海の宿 ならいの風 All Rights Reserved.
+          </small>
+          <div data-pencil-name="Footer Locale" class="text-[12px]/[normal] box-border text-[#AEB6B5] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[1px] text-left md:[white-space:nowrap]">
+            Izu Shimoda · Soto-ura
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <script>
+      window.__SRC_BASE__ = "../";
+      window.__ASSET_BASE__ = "assets/";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="scripts/faq-accordion.js"></script>
+    <script src="scripts/animation.js"></script>
+  </body>
+</html>

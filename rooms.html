@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お部屋 | 蒼海の宿 ならいの風</title>
+    <meta name="description" content="海を望むゆとりの客室。三世代が気兼ねなく寛げるお部屋をご案内。蒼海の宿 ならいの風（下田・外浦）。">
+    <script>
+      tailwind = { config: { corePlugins: { preflight: false } } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond%3Aital%2Cwght%400%2C300..700%3B1%2C300..700&family=Shippori+Antique+B1%3Awght%40400&family=Shippori+Mincho%3Awght%40400%3B500&display=swap" rel="stylesheet">
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      .rooms-gallery__main-img,
+      .rooms-gallery__thumb-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .rooms-gallery__main-img {
+        transition: opacity 0.35s ease;
+      }
+
+      .rooms-gallery__thumb {
+        border: 2px solid transparent;
+      }
+
+      .rooms-gallery__thumb.is-active {
+        border-color: #4A5D5B;
+      }
+
+      .rooms-gallery__hint {
+        margin-left: auto;
+      }
+
+      .room-type-card__img {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+      }
+
+      .room-type-card--hover:hover .room-type-card__img {
+        transform: scale(1.04);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .room-type-card__img {
+          transition: none;
+        }
+
+        .room-type-card--hover:hover .room-type-card__img {
+          transform: none;
+        }
+      }
+
+      .warm-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(26, 36, 34, 0.88);
+        padding: 40px 24px;
+      }
+
+      .warm-lightbox.is-open {
+        display: flex;
+      }
+
+      .warm-lightbox__img-wrap {
+        position: relative;
+        max-width: min(960px, 90vw);
+        max-height: 80vh;
+      }
+
+      .warm-lightbox__img-wrap img {
+        display: block;
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+
+      .warm-lightbox__close,
+      .warm-lightbox__prev,
+      .warm-lightbox__next {
+        appearance: none;
+        border: none;
+        background: none;
+        color: #fff;
+        font-family: "Cormorant Garamond", serif;
+        cursor: pointer;
+        position: absolute;
+        z-index: 2;
+      }
+
+      .warm-lightbox__close {
+        top: 24px;
+        right: 32px;
+        font-size: 36px;
+        line-height: 1;
+      }
+
+      .warm-lightbox__prev,
+      .warm-lightbox__next {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 48px;
+        line-height: 1;
+        padding: 12px;
+      }
+
+      .warm-lightbox__prev {
+        left: 24px;
+      }
+
+      .warm-lightbox__next {
+        right: 24px;
+      }
+
+      .warm-lightbox__caption {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #F0F4F3;
+        font-size: 12px;
+        white-space: nowrap;
+        margin: 0;
+        font-family: "Shippori Mincho", system-ui, sans-serif;
+      }
+
+      body.warm-lightbox-open {
+        overflow: hidden;
+      }
+
+      @media (max-width: 768px) {
+        .warm-lightbox__prev {
+          left: 8px;
+        }
+
+        .warm-lightbox__next {
+          right: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div data-pencil-name="客室 — 三世代温もり案" class="box-border w-full max-w-[1440px] mx-auto h-fit flex flex-col gap-0 justify-start items-stretch bg-[#F0F4F3] overflow-hidden">
+      <header data-pencil-name="Header" class="box-border w-full shrink-0 flex flex-wrap md:flex-nowrap md:flex-row md:h-[72px] gap-3 md:gap-0 p-4 md:p-[0px_56px] md:justify-between md:items-center bg-[#F0F4F3]">
+        <a href="index.html" data-pencil-name="Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border order-1 w-[181px] max-w-[50%] md:max-w-none shrink-0 h-fit flex flex-row gap-[10px] justify-start items-center no-underline">
+          <img data-pencil-name="Logo Mark" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border [flex:1_1_0] h-[57px] w-full object-contain">
+        </a>
+        <a href="tel:0558-36-4500" data-pencil-name="Header CTA" class="box-border order-2 md:order-3 ml-auto lg:ml-0 w-fit shrink-0 h-fit flex flex-row gap-0 py-[10px] px-[18px] md:px-4 lg:px-[18px] justify-start items-center bg-[#4A5D5B] rounded-[2px] text-[14px]/[normal] md:text-[13px] lg:text-[14px] text-[#F0F4F3] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">ご予約・ご相談</a>
+
+        <nav data-pencil-name="Nav Links" aria-label="メインナビゲーション" class="box-border order-3 md:order-2 w-full md:w-fit shrink-0 h-fit basis-full md:basis-auto flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[28px] justify-start items-center">
+          <a href="rooms.html" data-pencil-name="Nav 客室" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" data-pencil-name="Nav 温泉" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" data-pencil-name="Nav 料理" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" data-pencil-name="Nav 過ごし方" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" data-pencil-name="Nav アクセス" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" data-pencil-name="Nav FAQ" class="text-[16px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Antique_B1',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+        </nav>
+      </header>
+
+      <main class="w-full">
+              <div data-pencil-name="Page Hero" class="box-border w-full h-[820px] shrink-0 bg-[url('assets/images/お部屋.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="Hero Overlay" class="box-border absolute inset-0 w-full h-full [background-image:linear-gradient(180deg,_#1A242299_0%,_#1A242244_50%,_#1A2422BB_100%)] bg-no-repeat bg-[length:100%_100%] [z-index:0]"></div>
+        <div data-pencil-name="Hero Content" class="box-border w-[calc(100%-2rem)] max-w-[640px] md:w-[640px] h-fit absolute left-4 md:left-[80px] top-[200px] md:top-[280px] flex flex-col gap-[16px] justify-start items-start [z-index:1]">
+          <div data-pencil-name="Hero En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Rooms
+          </div>
+          <h1 data-pencil-name="Hero H1" class="m-0 text-[32px]/[normal] md:text-[48px]/[normal] box-border w-full text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+            お部屋
+          </h1>
+          <div data-pencil-name="Hero Sub" class="text-[16px]/[29px] box-border w-full text-[#E8EEEA] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+            海を望む、ゆとりの空間。三世代が気兼ねなく寛げる客室。
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="Intro" class="box-border w-full h-fit shrink-0 flex flex-col gap-[16px] px-5 py-12 md:p-[72px_120px] justify-start items-center bg-[#F0F4F3]">
+        <div data-pencil-name="Intro Body" class="text-[16px]/[32px] box-border w-full max-w-[720px] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center">
+          伊豆七島の名前を冠した7つのお部屋。
+          <br>
+          日常の喧騒を忘れ、心休まる
+          <br>
+          静かなときをお過ごしください。
+        </div>
+      </div>
+
+              <div data-pencil-name="Featured Room" class="box-border w-full h-fit shrink-0 flex flex-col gap-[48px] px-5 py-12 md:p-[96px_80px] justify-start items-center bg-[#FFFFFF]">
+        <div data-pencil-name="Feat Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[12px] justify-start items-center">
+          <div data-pencil-name="Feat En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Featured Room
+          </div>
+          <div data-pencil-name="Feat Ja" class="text-[24px] md:text-[32px]/[normal] box-border w-full max-w-[640px] px-2 text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-center">
+            客室で味わう、三つの贅沢
+          </div>
+        </div>
+        <div data-pencil-name="Feat Row" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[56px] justify-start items-center">
+          <div data-pencil-name="Feat Img" class="box-border w-full max-w-[560px] lg:w-[560px] shrink-0 h-[280px] md:h-[420px] flex flex-row gap-0 justify-start items-start bg-[url('assets/images/hachijo-hero.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden"></div>
+          <div data-pencil-name="Feat Text" class="box-border [flex:1_1_0] h-fit flex flex-col gap-[20px] justify-start items-start">
+            <div data-pencil-name="Feat Label" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+              Room Experience
+            </div>
+            <div data-pencil-name="Feat Title" class="text-[28px]/[41px] box-border w-full text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+              湯、眺め、
+              <br>
+              ゆとりのある時間
+            </div>
+            <div data-pencil-name="Feat Body" class="text-[16px]/[32px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              源泉の湯を客室でも大浴場でも。外浦の海や山の緑を望む眺望。
+              <br>
+              次の間や和洋の設えなど、人数や過ごし方に合わせたゆとりの空間。
+              <br>
+              どのタイプをお選びいただいても、快適な時間を感じていただけます。
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="Room Types" class="box-border w-full h-fit shrink-0 flex flex-col gap-[48px] px-5 py-12 md:p-[96px_80px] justify-start items-center bg-[#F0F4F3]">
+        <div data-pencil-name="Grid Head" class="box-border w-fit h-fit shrink-0 flex flex-col gap-[12px] justify-start items-center">
+          <div data-pencil-name="Grid En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Room Types
+          </div>
+          <div data-pencil-name="Grid Ja" class="text-[32px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            お部屋タイプ
+          </div>
+          <div data-pencil-name="Grid Lead" class="text-[14px]/[normal] box-border w-full max-w-[640px] px-2 text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center">
+            3つのタイプ、7つのお部屋。ご一行の人数と過ごし方に合わせてお選びください
+          </div>
+        </div>
+        <div data-pencil-name="Room Row" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-6 md:gap-[28px] justify-start items-start">
+          <div data-pencil-name="Room OV Onsen" class="room-type-card room-type-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[16px] justify-start items-start">
+            <div data-pencil-name="Room Img" class="room-type-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+              <div class="room-type-card__img box-border bg-[url('assets/images/rooms/hachijo-hero.jpg')] bg-no-repeat bg-cover bg-center"></div>
+            </div>
+            <div data-pencil-name="Room Tag" class="box-border w-fit h-fit shrink-0 flex flex-row gap-0 p-[4px_10px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+              <div data-pencil-name="Tag T" class="text-[11px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                温泉付き
+              </div>
+            </div>
+            <div data-pencil-name="Room En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic text-left [white-space:nowrap]">
+              Ocean View Onsen
+            </div>
+            <div data-pencil-name="Room Title" class="text-[20px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+              オーシャンビュー温泉付き
+            </div>
+            <div data-pencil-name="Room Desc" class="text-[14px]/[25px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              客室温泉・半露天風呂付き。八丈島・初島・大島の3室。
+              <br>
+              ファミリーからカップルまで。
+            </div>
+            <a href="#room-detail" data-jump-type="onsen" data-pencil-name="Room Link" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">
+              詳細を見る →
+            </a>
+          </div>
+          <div data-pencil-name="Room OV Standard" class="room-type-card room-type-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[16px] justify-start items-start">
+            <div data-pencil-name="Room Img" class="room-type-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+              <div class="room-type-card__img box-border bg-[url('assets/images/rooms/niijima-hero.jpg')] bg-no-repeat bg-cover bg-center"></div>
+            </div>
+            <div data-pencil-name="Room Tag" class="box-border w-fit h-fit shrink-0 flex flex-row gap-0 p-[4px_10px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+              <div data-pencil-name="Tag T" class="text-[11px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                海側
+              </div>
+            </div>
+            <div data-pencil-name="Room En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic text-left [white-space:nowrap]">
+              Ocean View Standard
+            </div>
+            <div data-pencil-name="Room Title" class="text-[20px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+              オーシャンビュー スタンダード
+            </div>
+            <div data-pencil-name="Room Desc" class="text-[14px]/[25px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              新島・三宅島。和室12畳とくつろぎのフロア。
+              <br>
+              潮風と波音に包まれる、カップル・ご夫婦向け。
+            </div>
+            <a href="#room-detail" data-jump-type="standard" data-pencil-name="Room Link" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">
+              詳細を見る →
+            </a>
+          </div>
+          <div data-pencil-name="Room Mountain Twin" class="room-type-card room-type-card--hover box-border [flex:1_1_0] h-fit flex flex-col gap-[16px] justify-start items-start">
+            <div data-pencil-name="Room Img" class="room-type-card__img-wrap box-border w-full h-[310px] shrink-0 overflow-hidden">
+              <div class="room-type-card__img box-border bg-[url('assets/images/rooms/kouzushima-02.jpg')] bg-no-repeat bg-cover bg-center"></div>
+            </div>
+            <div data-pencil-name="Room Tag" class="box-border w-fit h-fit shrink-0 flex flex-row gap-0 p-[4px_10px] justify-start items-start bg-[#E8EEEA] rounded-[2px]">
+              <div data-pencil-name="Tag T" class="text-[11px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+                山側
+              </div>
+            </div>
+            <div data-pencil-name="Room En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic text-left [white-space:nowrap]">
+              Mountain Twin
+            </div>
+            <div data-pencil-name="Room Title" class="text-[20px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+              山側ツイン
+            </div>
+            <div data-pencil-name="Room Desc" class="text-[14px]/[25px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+              神津島 A・B。洋室ツインで静かな滞在。
+              <br>
+              小さなお子様連れのベッド追加もご相談ください。
+            </div>
+            <a href="#room-detail" data-jump-type="mountain" data-pencil-name="Room Link" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">
+              詳細を見る →
+            </a>
+          </div>
+        </div>
+        <div id="room-detail" data-room-panel="" data-pencil-name="Room Detail Panel" class="box-border w-full h-fit shrink-0 flex flex-col gap-[24px] p-[48px_40px] justify-start items-start bg-[#FFFFFF] [border:1px_solid_#E8EEEA] rounded-[2px]">
+          <script type="application/json" data-room-data="">
+{
+  "onsen": {
+    "tabNote": "（このタイプは3室）",
+    "note": "",
+    "rooms": [
+      {
+        "tab": "八丈島",
+        "en": "Hachijojima",
+        "title": "【八丈島】オーシャンビュー 半露天温泉風呂付 和洋室",
+        "lead": "外浦海水浴場を一望できる半露天風呂付きの和洋室。窓からは潮風と波の音。ご家族やカップルでの滞在に。",
+        "specs": ["間取り　和洋室（半露天風呂付）", "定員　2〜4名", "設備　半露天温泉風呂／オーシャンビュー／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/hachijo-hero.jpg",
+          "assets/images/rooms/hachijo-02.jpg",
+          "assets/images/rooms/hachijo-03.jpg",
+          "assets/images/rooms/hachijo-04.jpg"
+        ]
+      },
+      {
+        "tab": "初島",
+        "en": "Hatsushima",
+        "title": "【初島】オーシャンビュー 温泉風呂付 和室二間",
+        "lead": "和室二間続きの広々とした客室に温泉風呂付き。三世代や大人数のご家族にもゆとりがあります。",
+        "specs": ["間取り　和室二間（温泉風呂付）", "定員　2〜7名", "設備　温泉風呂／オーシャンビュー／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/hatsushima-hero.jpg",
+          "assets/images/rooms/hatsushima-02.jpg",
+          "assets/images/rooms/hatsushima-03.jpg"
+        ]
+      },
+      {
+        "tab": "大島",
+        "en": "Oshima",
+        "title": "【大島】オーシャンビュー 半露天温泉風呂付 和室12畳",
+        "lead": "半露天温泉風呂付きの和室12畳。海を眺めながら、ご家族だけの湯時間をお楽しみください。",
+        "specs": ["間取り　和室12畳（半露天風呂付）", "定員　2〜4名", "設備　半露天温泉風呂／オーシャンビュー／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/oshima-hero.jpg",
+          "assets/images/rooms/oshima-02.jpg",
+          "assets/images/rooms/oshima-03.jpg"
+        ]
+      }
+    ]
+  },
+  "standard": {
+    "tabNote": "（このタイプは2室）",
+    "note": "",
+    "rooms": [
+      {
+        "tab": "新島",
+        "en": "Niijima",
+        "title": "【新島】オーシャンビュー 次の間付 和室12畳",
+        "lead": "和室12畳とくつろぎのフロア。潮風と波音に包まれる、カップル・ご夫婦向けのオーシャンビュー客室です。",
+        "specs": ["間取り　和室12畳＋次の間", "定員　2〜5名", "設備　オーシャンビュー／次の間／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/niijima-hero.jpg",
+          "assets/images/rooms/niijima-02.jpg",
+          "assets/images/rooms/niijima-03.jpg"
+        ]
+      },
+      {
+        "tab": "三宅島",
+        "en": "Miyakejima",
+        "title": "【三宅島】オーシャンビュー 次の間付 和室12畳",
+        "lead": "新島と同タイプのオーシャンビュー客室。ご予約状況に応じてお部屋をご案内いたします。",
+        "specs": ["間取り　和室12畳＋次の間", "定員　2〜5名", "設備　オーシャンビュー／次の間／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/niijima-hero.jpg",
+          "assets/images/rooms/niijima-02.jpg",
+          "assets/images/rooms/niijima-03.jpg"
+        ]
+      }
+    ]
+  },
+  "mountain": {
+    "tabNote": "（このタイプは2室）",
+    "note": "",
+    "rooms": [
+      {
+        "tab": "神津島 A",
+        "en": "Kouzushima A",
+        "title": "【神津島 A】山側 洋室ツイン",
+        "lead": "山側の静かな洋室ツイン。小さなお子様連れのベッド追加もご相談ください。",
+        "specs": ["間取り　洋室ツイン", "定員　1〜2名", "設備　ツインベッド／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/kouzushima-03.jpg",
+          "assets/images/rooms/kouzushima-02.jpg",
+          "assets/images/rooms/kouzushima-01.jpg"
+        ]
+      },
+      {
+        "tab": "神津島 B",
+        "en": "Kouzushima B",
+        "title": "【神津島 B】山側 洋室ツイン",
+        "lead": "A室と同タイプの山側ツイン。落ち着いた滞在を求める方におすすめです。",
+        "specs": ["間取り　洋室ツイン", "定員　1〜2名", "設備　ツインベッド／Wi‑Fi"],
+        "images": [
+          "assets/images/rooms/kouzushima-03.jpg",
+          "assets/images/rooms/kouzushima-02.jpg",
+          "assets/images/rooms/kouzushima-01.jpg"
+        ]
+      }
+    ]
+  }
+}
+          </script>
+          <div data-pencil-name="Detail En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Room Details
+          </div>
+          <div data-pencil-name="Type Switch" class="box-border w-full max-w-full h-fit shrink-0 flex flex-row flex-wrap gap-[8px] justify-start items-start" role="tablist" aria-label="お部屋タイプ">
+            <button type="button" data-room-type="onsen" data-pencil-name="Type Onsen Active" class="rooms-type-btn is-active box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[10px_18px] justify-start items-center bg-[#4A5D5B] rounded-[2px] text-[14px]/[normal] text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] border-0 cursor-pointer">
+              温泉付き
+            </button>
+            <button type="button" data-room-type="standard" data-pencil-name="Type Standard" class="rooms-type-btn box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[10px_18px] justify-start items-center bg-[#E8EEEA] rounded-[2px] text-[14px]/[normal] text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] border-0 cursor-pointer">
+              スタンダード
+            </button>
+            <button type="button" data-room-type="mountain" data-pencil-name="Type Mountain" class="rooms-type-btn box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[10px_18px] justify-start items-center bg-[#E8EEEA] rounded-[2px] text-[14px]/[normal] text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] border-0 cursor-pointer">
+              山側ツイン
+            </button>
+          </div>
+          <div data-pencil-name="Island Tabs" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[28px] justify-start items-center">
+            <div data-island-tabs="" class="box-border w-fit h-fit shrink-0 flex flex-row gap-[28px] justify-start items-center"></div>
+            <span data-island-note="" data-pencil-name="Tab Note" class="text-[12px]/[normal] box-border text-[#8A908C] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]"></span>
+          </div>
+          <div data-pencil-name="Detail Body" class="box-border w-full h-fit shrink-0 flex flex-col lg:flex-row gap-8 lg:gap-[48px] justify-start items-start">
+            <div data-pencil-name="Gallery" class="rooms-gallery box-border w-full max-w-[640px] lg:w-[640px] shrink-0 h-fit flex flex-col gap-[12px] justify-start items-start">
+              <button type="button" data-pencil-name="Gallery Main" data-gallery-main="" aria-label="写真を拡大" class="rooms-gallery__main box-border w-full max-w-[640px] lg:w-[640px] h-[240px] md:h-[400px] shrink-0 overflow-hidden p-0 border-0 cursor-zoom-in bg-[#ddd]">
+                <img src="assets/images/rooms/hachijo-hero.jpg" alt="八丈島" width="640" height="400" class="rooms-gallery__main-img">
+              </button>
+              <div data-pencil-name="Gallery Thumbs" data-gallery-thumbs="" class="box-border w-full h-fit shrink-0 flex flex-row gap-[8px] justify-start items-start flex-wrap"></div>
+              <div data-pencil-name="Gallery Nav" class="box-border w-full h-fit shrink-0 flex flex-row gap-3 justify-between items-center">
+                <button type="button" data-pencil-name="Gallery Prev" data-gallery-prev="" aria-label="前の写真" class="text-[32px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap] bg-transparent border-0 p-0 cursor-pointer">
+                  ‹
+                </button>
+                <div data-pencil-name="Gallery Dots" data-gallery-dots="" class="box-border w-fit shrink-0 h-fit flex flex-row gap-[6px] justify-start items-center"></div>
+                <button type="button" data-pencil-name="Gallery Next" data-gallery-next="" aria-label="次の写真" class="text-[32px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal text-left [white-space:nowrap] bg-transparent border-0 p-0 cursor-pointer">
+                  ›
+                </button>
+                <span class="rooms-gallery__hint text-[12px] text-[#4A5D5B] font-['Shippori_Mincho',system-ui,sans-serif]">クリックで拡大</span>
+              </div>
+            </div>
+            <div data-pencil-name="Detail Text" class="box-border [flex:1_1_0] h-fit min-h-[280px] flex flex-col gap-[16px] justify-start items-start">
+              <div data-room-en="" data-pencil-name="Island En" class="text-[14px]/[normal] box-border text-[#BFA170] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+                Hachijojima
+              </div>
+              <div data-room-title="" data-pencil-name="Room Full Title" class="text-[20px]/[30px] box-border w-full text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                【八丈島】オーシャンビュー 半露天温泉風呂付 和洋室
+              </div>
+              <div data-room-lead="" data-pencil-name="Room Lead" class="text-[14px]/[27px] box-border w-full text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+                外浦海水浴場を一望できる半露天風呂付きの和洋室。窓からは潮風と波の音。ご家族やカップルでの滞在に。
+              </div>
+              <div data-room-specs="" data-pencil-name="Specs" class="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] p-[8px_0px_0px_0px] justify-start items-start"></div>
+              <div data-room-note="" class="text-[12px]/[20px] box-border w-full text-[#8A908C] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="Family Comfort" class="box-border w-full h-fit shrink-0 flex flex-col gap-[48px] px-5 py-12 md:p-[88px_80px] justify-center items-center bg-[#E8EEEA]">
+        <div data-pencil-name="Fam Head" class="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] justify-start items-center">
+          <div data-pencil-name="Fam En" class="text-[14px]/[normal] box-border text-[#4A5D5B] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[2px] text-left [white-space:nowrap]">
+            Guest Info
+          </div>
+          <div data-pencil-name="Fam Ja" class="text-[32px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left [white-space:nowrap]">
+            客室概要
+          </div>
+        </div>
+        <div data-pencil-name="Fam Card" class="box-border w-full max-w-[800px] h-fit shrink-0 flex flex-col gap-[24px] md:gap-[32px] p-6 md:p-[48px_48px_44px_48px] justify-start items-start bg-[#FFFFFF] [border:1px_solid_#E8EEEA] rounded-[2px]">
+          <div data-pencil-name="Fam Spec List" class="box-border w-full h-fit shrink-0 flex flex-col gap-0 justify-start items-start">
+            <div data-pencil-name="Row Check-in" class="box-border w-full h-fit shrink-0 flex flex-row gap-[28px] p-[0px_0px_20px_0px] justify-start items-start">
+              <div data-pencil-name="Label" class="text-[14px]/[normal] box-border w-[112px] shrink-0 text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                チェックイン
+              </div>
+              <div data-pencil-name="Value" class="text-[14px]/[26px] box-border [flex:1_1_0] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+                15：00～18：00（18時以降になる場合は必ずご連絡ください。）
+              </div>
+            </div>
+            <div data-pencil-name="Rule 1" class="box-border w-full h-[1px] shrink-0 bg-[#E8EEEA]"></div>
+            <div data-pencil-name="Row Check-out" class="box-border w-full h-fit shrink-0 flex flex-row gap-[28px] p-[20px_0px] justify-start items-start">
+              <div data-pencil-name="Label" class="text-[14px]/[normal] box-border w-[112px] shrink-0 text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                チェックアウト
+              </div>
+              <div data-pencil-name="Value" class="text-[14px]/[26px] box-border [flex:1_1_0] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+                10：00
+              </div>
+            </div>
+            <div data-pencil-name="Rule 2" class="box-border w-full h-[1px] shrink-0 bg-[#E8EEEA]"></div>
+            <div data-pencil-name="Row Meals" class="box-border w-full h-fit shrink-0 flex flex-row gap-[28px] p-[20px_0px] justify-start items-start">
+              <div data-pencil-name="Label" class="text-[14px]/[normal] box-border w-[112px] shrink-0 text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                お食事
+              </div>
+              <div data-pencil-name="Value" class="text-[14px]/[26px] box-border [flex:1_1_0] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+                朝夕食付
+              </div>
+            </div>
+            <div data-pencil-name="Rule 3" class="box-border w-full h-[1px] shrink-0 bg-[#E8EEEA]"></div>
+            <div data-pencil-name="Row Amenities" class="box-border w-full h-fit shrink-0 flex flex-row gap-[28px] p-[20px_0px_0px_0px] justify-start items-start">
+              <div data-pencil-name="Label" class="text-[14px]/[normal] box-border w-[112px] shrink-0 text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left">
+                共通アメニティ
+              </div>
+              <div data-pencil-name="Value" class="text-[14px]/[26px] box-border [flex:1_1_0] text-[#4A5456] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left">
+                シャンプー・リンス、ボディソープ・石鹸、フェイスタオル、バスタオル、ボディタオル・スポンジ、ハミガキセット、くし・ブラシ、ドライヤー、髭剃り、浴衣、スリッパ、洗顔料、化粧水、メイク落とし、綿棒、冷蔵庫、湯沸しポット、お茶セット（無料）、テレビ、金庫
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+              <div data-pencil-name="相談CTA" class="box-border w-full h-fit min-h-[480px] md:min-h-[573px] md:h-[573px] shrink-0 flex flex-col gap-[20px] px-5 py-16 md:px-5 py-12 md:p-[80px_100px] justify-center items-center bg-[url('assets/images/final-cta-bg.jpg')] bg-no-repeat bg-cover bg-center overflow-hidden relative">
+        <div data-pencil-name="CTA Overlay" class="box-border absolute inset-0 w-full h-full bg-[#1a242299] [z-index:0]"></div>
+        <div data-pencil-name="CTA Heading" class="text-[28px]/[40px] md:text-[36px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-center relative [z-index:1]">
+          お部屋のご相談、お待ちしています
+        </div>
+        <div data-pencil-name="CTA Body" class="text-[16px]/[30px] box-border w-full max-w-[560px] px-1 text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-center relative [z-index:2]">
+          人数・間取り・バリアフリーのご相談など、
+          <br>
+          お電話でお気軽にお問い合わせください。
+        </div>
+        <div data-pencil-name="CTA Actions" class="box-border w-full max-w-[560px] h-fit shrink-0 flex flex-col sm:flex-row gap-[16px] sm:gap-[20px] p-[12px_0px_0px_0px] justify-center items-center relative [z-index:3]">
+          <a data-pencil-name="CTA Tel" class="text-[28px]/[normal] box-border text-[#BFA170] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline" href="tel:0558-36-4500">
+            0558-36-4500
+          </a>
+          <a data-pencil-name="CTA Book" class="box-border w-fit shrink-0 h-fit flex flex-row gap-0 p-[14px_28px] justify-start items-center bg-[#BFA170] rounded-[2px] no-underline" href="tel:0558-36-4500">
+            <div data-pencil-name="CTA Book Label" class="text-[14px]/[normal] box-border text-[#2E3334] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap]">
+              空室確認・予約
+            </div>
+          </a>
+        </div>
+      </div>
+
+      </main>
+      <footer data-pencil-name="Footer" class="box-border w-full h-fit shrink-0 flex flex-col gap-[28px] px-5 pt-14 pb-8 md:px-[80px] md:pt-[56px] md:pb-[32px] justify-start items-start bg-[#4A5D5B]">
+        <div data-pencil-name="Footer Main" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-8 md:gap-[48px] justify-between items-start">
+          <div data-pencil-name="Footer Brand" class="box-border w-fit shrink-0 h-fit flex flex-col gap-[6px] justify-start items-start">
+            <a href="index.html" data-pencil-name="Footer Logo" aria-label="蒼海の宿 ならいの風 トップへ" class="box-border w-fit shrink-0 h-fit no-underline">
+              <img data-pencil-name="Footer Logo Img" src="assets/images/logo.png" alt="蒼海の宿 ならいの風" class="box-border w-[136px] h-[61px] shrink-0 object-contain">
+            </a>
+          </div>
+          <div data-pencil-name="Footer Info" class="box-border w-full md:w-fit shrink-0 h-fit flex flex-col gap-[14px] justify-start items-start md:items-end">
+            <address data-pencil-name="Info Addr" class="text-[12px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:text-right md:[white-space:nowrap] not-italic">
+              静岡県下田市柿崎700番地・外浦海水浴場 目の前
+            </address>
+            <nav data-pencil-name="Info Nav" aria-label="フッターナビゲーション" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-row flex-wrap md:flex-nowrap gap-x-5 gap-y-2 md:gap-[20px] justify-start md:justify-start items-center">
+              <a href="rooms.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">客室</a>
+
+          <a href="onsen.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">温泉</a>
+
+          <a href="cuisine.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">料理</a>
+
+          <a href="news.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">過ごし方</a>
+
+          <a href="access.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">アクセス</a>
+
+          <a href="faq.html" class="text-[13px]/[normal] box-border text-[#D1C7BD] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] no-underline">FAQ</a>
+
+            </nav>
+            <div data-pencil-name="Info Contact" class="box-border w-full md:w-fit h-fit shrink-0 flex flex-col sm:flex-row flex-wrap gap-2 md:gap-[10px] justify-start items-start sm:items-center">
+              <a href="tel:0558-36-4500" data-pencil-name="Footer Phone" class="text-[16px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-medium text-left md:[white-space:nowrap] no-underline">0558-36-4500</a>
+
+              <span class="text-[13px]/[normal] box-border text-[#929E9D] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left [white-space:nowrap] hidden sm:inline">
+                ・
+              </span>
+              <a href="tel:0558-36-4500" class="text-[13px]/[normal] box-border text-[#FFFFFF] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap] no-underline">
+                空室確認・予約 →
+              </a>
+            </div>
+          </div>
+        </div>
+        <div data-pencil-name="Footer Rule" class="box-border w-full h-[1px] shrink-0 bg-[#6A7A79]" aria-hidden="true"></div>
+        <div data-pencil-name="Footer Bottom" class="box-border w-full h-fit shrink-0 flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-start md:items-center">
+          <small data-pencil-name="Copyright" class="text-[11px]/[normal] box-border text-[#AEB6B5] font-['Shippori_Mincho',system-ui,sans-serif] font-normal text-left md:[white-space:nowrap]">
+            © 蒼海の宿 ならいの風 All Rights Reserved.
+          </small>
+          <div data-pencil-name="Footer Locale" class="text-[12px]/[normal] box-border text-[#AEB6B5] font-['Cormorant_Garamond',system-ui,sans-serif] font-normal italic tracking-[1px] text-left md:[white-space:nowrap]">
+            Izu Shimoda · Soto-ura
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <div class="warm-lightbox" data-lightbox="" aria-hidden="true" role="dialog" aria-label="写真拡大表示">
+      <button type="button" class="warm-lightbox__close" data-lightbox-close="" aria-label="閉じる">×</button>
+      <button type="button" class="warm-lightbox__prev" data-lightbox-prev="" aria-label="前の写真">‹</button>
+      <div class="warm-lightbox__img-wrap">
+        <img src="" alt="" data-lightbox-img="">
+      </div>
+      <button type="button" class="warm-lightbox__next" data-lightbox-next="" aria-label="次の写真">›</button>
+      <p class="warm-lightbox__caption" data-lightbox-caption=""></p>
+    </div>
+
+    <script>
+      window.__SRC_BASE__ = "../";
+      window.__ASSET_BASE__ = "assets/";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="scripts/animation.js"></script>
+    <script src="scripts/rooms-gallery.js"></script>
+  </body>
+</html>
